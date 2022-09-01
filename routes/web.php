@@ -17,7 +17,6 @@ use App\Http\Controllers\logController;
 */
 
 /* Login */
-
 Route::get('/', function () {
     return view('login.login');
 })->name('login');
@@ -25,12 +24,17 @@ Route::get('/', function () {
 Route::post('/logAuth', [logController::class,'Login']);
 
 /* Logout */
-
 Route::get('/logOut', function(){
     Auth::logout();
     return redirect('/');
 });
 
+
+/* Register */
+Route::get('/formulirReg', function () {
+    return view('register.rgform');
+});
+Route::post('/simpanDataReg', [regController::class,'simpanDataReg']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/formulir', function () {
@@ -42,10 +46,6 @@ Route::middleware(['auth'])->group(function(){
     Route::PUT('/ubahdata/{id}', [bioController::class, 'ubahData']);
     Route::delete('/hapus/{id}', [bioController::class, 'hapusData'])->name('hapus');
     /* Register */
-    Route::get('/formulirReg', function () {
-        return view('register.rgform');
-    });
-    Route::post('/simpanDataReg', [regController::class,'simpanDataReg']);
     Route::get('/dataReg', [regController::class,'indexReg']);
     Route::get('/ubahReg/{id}', [regController::class,'ubahReg']);
     Route::PUT('/ubahDataReg/{id}', [regController::class, 'ubahDataReg']);
