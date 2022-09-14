@@ -5,6 +5,12 @@
 @section('jadwal pelajaran')
 <div class="card">
     <div class="card-body">
+        <form action="/searchReg" method="GET">
+            <div class="row mb-3">
+                <input class="form-control col-2 ml-3" type="text" name="search" placeholder="Search Table...">
+                <input class="btn btn-primary ml-4" type="submit" value="Search">
+            </div>
+        </form>
         <table class="table">
             <thead>
                 <tr> <!-- Ini yg di file rgtabel.blade.php  -->

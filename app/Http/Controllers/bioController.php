@@ -85,4 +85,10 @@ class bioController extends Controller
         Session::flash('sukses', 'Update Data Sukses!!');
         return redirect('/data');
     }
+
+    public function search(Request $request){
+        $searchResult = $request->search;
+        $result=bioModel::where('nama','like',"%".$searchResult."%")->paginate();
+        return view('pages.tabel',['bio' => $result]);
+    }
 }

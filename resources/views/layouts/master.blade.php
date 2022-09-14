@@ -33,6 +33,7 @@
         </section>
         @yield('jadwal pelajaran')
         @yield('formulir')
+        @yield('profile')
       </div>
       @include('layouts.footer')
     </div>
@@ -46,7 +47,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
 
-  <!-- JS Libraies -->
+  <!-- JS Libraries -->
 
   <!-- Template JS File -->
   <script src="{{asset('assets/js/scripts.js')}}"></script>

@@ -5,6 +5,12 @@
 @section('jadwal pelajaran')
 <div class="card">
     <div class="card-body">
+        <form action="/search" method="GET">
+            <div class="row mb-3">
+                <input class="form-control col-2 ml-3" type="text" name="search" placeholder="Search Table...">
+                <input class="btn btn-primary ml-4" type="submit" value="Search">
+            </div>
+        </form>
         <table class="table">
             <!-- @if ($message = Session::get('sukses'))
                 <div class="alert alert-success alert-block">
@@ -12,7 +18,6 @@
                     <strong style='font-size: 14px'>{{ $message }}</strong>
                 </div>
             @endif -->
-
             <thead>
                 <tr> <!-- Ini yang di file tabel.blade.php -->
                 <th scope="col">No.</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 use Session;
 
@@ -59,19 +60,25 @@ class regController extends Controller
     }
 
     public function indexReg(){
-        $bio=User::all(); //rgtabel nya sesuain sama nama file yg kamu buat
+        $bio=User::all(); 
         return view('register.rgtabel', ['bio'=>$bio]);
     }
 
     public function ubahReg($id){
         $regUbah=User::findOrFail($id);
         return view('register.rgubah', ['regUbah' => $regUbah]);
-    }                       //Ini juga
+    }
 
     public function hapusDataReg($idHapus){
         $regHapus=User::findOrFail($idHapus);
         $regHapus->delete();
         Session::flash('sukses', 'Hapus data SUKSES!!');
         return redirect('/dataReg');
+    }
+
+    public function searchReg(Request $request){
+        $searchResult = $request->search;
+        $result=User::where('name','like',"%".$searchResult."%")->paginate();
+        return view('register.rgtabel',['bio' => $result]);
     }
 }

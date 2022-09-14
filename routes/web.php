@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\bioController;
 use App\Http\Controllers\regController;
 use App\Http\Controllers\logController;
+use App\Http\Controllers\profileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,18 +38,23 @@ Route::get('/formulirReg', function () {
 Route::post('/simpanDataReg', [regController::class,'simpanDataReg']);
 
 Route::middleware(['auth'])->group(function(){
+    /* Biodata */
     Route::get('/formulir', function () {
         return view('pages.form');
     });
     Route::post('/simpanData', [bioController::class,'simpanData']);
     Route::get('/data', [bioController::class,'index']);
-    Route::get('/ubah/{id}', [bioController::class,'ubah']);;
+    Route::get('/ubah/{id}', [bioController::class,'ubah']);
     Route::PUT('/ubahdata/{id}', [bioController::class, 'ubahData']);
     Route::delete('/hapus/{id}', [bioController::class, 'hapusData'])->name('hapus');
+    Route::get('/search', [bioController::class, 'search']);
     /* Register */
     Route::get('/dataReg', [regController::class,'indexReg']);
     Route::get('/ubahReg/{id}', [regController::class,'ubahReg']);
     Route::PUT('/ubahDataReg/{id}', [regController::class, 'ubahDataReg']);
     Route::delete('/hapusReg/{id}', [regController::class, 'hapusDataReg'])->name('hapusReg');
+    Route::get('/searchReg', [regController::class, 'searchReg']);
+    /* Profile */
+    Route::get('/profile', [profileController::class, 'profile']);
 });
 
