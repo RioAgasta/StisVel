@@ -36,8 +36,22 @@ class profileController extends Controller
     // }
 
     public function profile(){
+        
+        // $credentials=$request->only(['email','password','name']);
+        // if(Auth::attempt($credentials)){
+        //     return redirect('/dataReg');
+        // }
+        // return redirect('/')->with('message', 'Login gagal! Data tidak sesuai!');
+        if(count(bioModel::all()->where('email', auth()->user()->email))=== 0){
+            return redirect('/dataReg')->with('error', 'Tidak ditemukan email yang sama!');
+        }
+
         return view('menus.profile', [
             "biodata"=>bioModel::where('email', auth()->user()->email)->firstOrFail()
         ]);
+
+        // return view('menus.profile', [
+        //     "biodata"=>bioModel::where('email', auth()->user()->email)->firstOrFail()
+        // ]);
     }
 }

@@ -5,6 +5,11 @@
 @section('jadwal pelajaran')
 <div class="card">
     <div class="card-body">
+        @if ($message = Session::get('error'))
+            <div class="alert alert-success alert-block">
+                <strong style='font-size: 14px'>{{ $message }}</strong>
+            </div>
+        @endif
         <form action="/searchReg" method="GET">
             <div class="row mb-3">
                 <input class="form-control col-2 ml-3" type="text" name="search" placeholder="Search Table...">

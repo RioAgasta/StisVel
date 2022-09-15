@@ -25,9 +25,9 @@ class logController extends Controller
     //     ])->onlyInput('email');
     // }
     
-    public function _construct(){
-        $this->middleware('guest')->except('LogOut');
-    }
+    // public function _construct(){
+    //     $this->middleware('guest')->except('LogOut');
+    // }
 
     public function halamanLogin(){
         return view('login.login');

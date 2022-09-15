@@ -38,7 +38,7 @@
         <div class="card">
             <form method="post" action="#" class="needs-validation" novalidate="">
             <div class="card-header">
-                <h4>Edit Profile</h4>
+                <h4>Profile Biodata</h4>
             </div>
             <div class="card-body">
                 <div class="row">
